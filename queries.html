@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queries - Brandy Store</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #chat-input {
+            width: 100%;
+            height: 100px; /* Increased height */
+            font-size: 18px; /* Bigger text */
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            resize: none; /* Prevent manual resizing */
+        }
+        .chatbox {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 600px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav class="left-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+            </ul>
+        </nav>
+        <a href="#" id="brand">
+            <img src="images/logo.png" alt="Logo" class="logo">
+        </a>
+        <nav class="right-nav">
+            <ul>
+                <li><a href="queries.html" class="active">Queries</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="queries" class="section-p1">
+        <div class="container">
+            <h1 style="color: darkblue;"> Have a Question? Ask Our Chatbot!</h1>
+            <p>Type your query below, and our chatbot will assist you.</p>
+
+            <div class="chatbox">
+                <div class="chat-output" id="chat-output"></div>
+                <textarea id="chat-input" placeholder="Ask a question..." onkeydown="if(event.key === 'Enter') sendMessage()"></textarea>
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="images/logo.png" height="110" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> KOLHAPUR</p>
+            <p><strong>phone:</strong> 999999999 </p>
+            <p><strong>Hours:</strong> 9.00 AM TO 5.00 PM</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-square-instagram"></i>
+                    <i class="fa-brands fa-pinterest"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#"><b>About us</b></a>
+            <a href="#"><b>Delivery Information</b></a>
+            <a href="#"><b>Privacy Policy</b></a>
+            <a href="#"><b>Terms & Conditions</b></a>
+            <a href="#"><b>Conatct Us</b></a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="images/app.jpg" alt="">
+                <img src="images/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="images/pay.png" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>© 2023 Hover & Kraft </p>
+        </div>
+    </footer>
+
+
+    <script>
+        async function sendMessage() {
+            const inputField = document.getElementById('chat-input');
+            const outputField = document.getElementById('chat-output');
+            const query = inputField.value.trim();
+    
+            if (query) {
+                const userMessage = document.createElement('div');
+                userMessage.classList.add('user-message');
+                userMessage.textContent = `You: ${query}`;
+                outputField.appendChild(userMessage);
+    
+                inputField.value = '';
+    
+                try {
+                    const response = await fetch('http://127.0.0.1:8000/query', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ query }),
+                    });
+    
+                    if (response.ok) {
+                        const data = await response.json();
+                        const botMessage = document.createElement('div');
+                        botMessage.classList.add('bot-message');
+                        botMessage.textContent = data.answer;
+                        outputField.appendChild(botMessage);
+                    } else {
+                        throw new Error('Failed to fetch response from the server.');
+                    }
+                } catch (error) {
+                    const errorMessage = document.createElement('div');
+                    errorMessage.classList.add('bot-message');
+                    errorMessage.textContent = `Bot: Sorry, something went wrong.`;
+                    outputField.appendChild(errorMessage);
+                }
+    
+                outputField.scrollTop = outputField.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>

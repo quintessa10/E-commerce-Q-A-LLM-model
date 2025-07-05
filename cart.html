@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="cart.css">
+    <script src="payment.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+    </header>
+
+    <main id="cart-page">
+        <div id="cart-items"></div>
+        <h3>Total: ₹<span id="total-amount">0</span></h3>
+        <button onclick="checkout()">Proceed to Checkout</button>
+    </main>
+
+    <script>
+        function checkout() {
+            var totalAmount = document.getElementById('total-amount').innerText;
+            window.location.href = `payment.html?amount=${totalAmount}`;
+        }
+    </script>
+</body>
+</html>

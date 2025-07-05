@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Brandy Store</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+    <style>
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 40px 20px;
+        }
+        .product {
+            width: 300px;
+            margin: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .product:hover {
+            transform: scale(1.05);
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .product h3 {
+            margin-top: 10px;
+            color: #0a2240;
+        }
+        .product p {
+            color: #d4af37;
+            font-weight: bold;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #d4af37;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #cc9f53;
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+footer .logo {
+    margin-bottom: 30px;
+
+}
+
+footer h4 {
+    font-size: 14px;
+    padding-bottom: 20px;
+
+}
+
+footer p {
+    font-size: 13px;
+    margin: 0 0 8px 0;
+}
+
+footer a {
+    font-size: 13px;
+    text-decoration: none;
+    color: #0532a2;
+    margin-bottom: 10px;
+}
+
+footer .follow {
+    margin-top: 20px;
+}
+
+footer .follow i {
+    color: #465b52;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+footer .install .row img {
+    border: 1px solid darkcyan;
+    border-radius: 6px;
+}
+
+footer .install img {
+    margin: 10px 0 15px 0;
+}
+
+footer .follow i:hover,
+footer a:hover {
+    color: darkcyan;
+}
+
+footer .copyright {
+    width: 100%;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav class="left-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Shop</a></li>
+            </ul>
+        </nav>
+        
+        <a href="#" id="brand">
+            <img src="images/logo.png" alt="Logo" class="logo">
+        </a>
+        
+        <nav class="right-nav">
+            <ul>
+                <li><a href="queries.html">Queries</a></li>
+                <li><a href="contact.html">Contact us</a></li>
+                <li class="cart-link">
+                    <a href="cart.html">
+                        <!-- SVG Cart Icon -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a1 1 0 0 0 1 1.11h9.72a1 1 0 0 0 1-.89l1.38-8.28H5.21"></path>
+                        </svg>
+                         <span id="cart-count"></span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="products">
+            <div class="product">
+                <img src="images/naopleon grape.png" alt="Brandy Bottle 1">
+                <h3>Premium Brandy</h3>
+                <p>₹ 1300</p>
+                <button class="cta-button" onclick="addToCart('Premium Brandy', 1300)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/napoleon green.png" alt="Brandy Bottle 2">
+                <h3>Aged Brandy</h3>
+                <p>₹ 1500</p>
+                <button class="cta-button" onclick="addToCart('Aged Brandy', 1500)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/mansion house gold.png" alt="Brandy Bottle 3">
+                <h3>Rare Vintage Brandy</h3>
+                <p>₹ 1800</p>
+                <button class="cta-button" onclick="addToCart('Rare Vintage Brandy', 1800)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/mansion house chambers.png" alt="Brandy Bottle 4">
+                <h3>Special Reserve</h3>
+                <p>₹ 2500</p>
+                <button class="cta-button" onclick="addToCart('Special Reserve', 2500)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/blue lagoon Gin.png" alt="Gin">
+                <h3>Blue lagoon Gin</h3>
+                <p>₹ 1700</p>
+                <button class="cta-button" onclick="addToCart('Blue lagoon Gin', 1700)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/Screenshot 2024-11-07 190536.png" alt="Brandy Bottle 5">
+                <h3>Madira Gold Dark</h3>
+                <p>₹ 2400</p>
+                <button class="cta-button" onclick="addToCart('Madira Gold Dark', 2400)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/blue.png" alt="gin 2">
+                <h3>gin</h3>
+                <p>₹ 1500</p>
+                <button class="cta-button" onclick="addToCart('Gin', 1500)">Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="images/mansion green (1).png" alt="Brandy Bottle 6">
+                <h3>Mansion Green</h3>
+                <p>₹ 2000</p>
+                <button class="cta-button" onclick="addToCart('Mansion Green', 2000)">Add to Cart</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="section-p1">
+        <div class="col">
+            <img class="logo" src="images/logo.png" height="110" alt="">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> go ask your mom</p>
+            <p><strong>phone:</strong> go ask your sister </p>
+            <p><strong>Hours:</strong> send your step sister</p>
+            <div class="follow">
+                <h4>Follow us</h4>
+                <div class="icon">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-square-instagram"></i>
+                    <i class="fa-brands fa-pinterest"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="#"><b>About us</b></a>
+            <a href="#"><b>Delivery Information</b></a>
+            <a href="#"><b>Privacy Policy</b></a>
+            <a href="#"><b>Terms & Conditions</b></a>
+            <a href="#"><b>Conatct Us</b></a>
+        </div>
+
+        <div class="col">
+            <h4>My Account</h4>
+            <a href="#">Sign In</a>
+            <a href="#">View Cart</a>
+            <a href="#">My Wishlist</a>
+            <a href="#">Track My Order</a>
+            <a href="#">Help</a>
+        </div>
+
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img src="images/app.jpg" alt="">
+                <img src="images/play.jpg" alt="">
+            </div>
+            <p>Secured Payment Gateways</p>
+            <img src="images/pay.png" alt="">
+        </div>
+
+        <div class="copyright">
+            <p>© 2023 Hover & Kraft </p>
+        </div>
+    </footer>
+
+</body>
+</html>
